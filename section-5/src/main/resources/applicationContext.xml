@@ -7,19 +7,25 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder location="classpath:sport.properties"/>
+
     <!-- Define your beans here -->
     <bean id="myFortune" class="com.udemy.spring.HappyFortuneService" />
 
     <bean id="myCoach" class="com.udemy.spring.TrackCoach">
 
-        <!-- set up constructor injection-->
+        <!-- set up constructor injection -->
         <constructor-arg ref="myFortune" />
     </bean>
 
     <bean id="myCricketCoach" class="com.udemy.spring.CricketCoach">
 
-        <!-- set up setter injection-->
+        <!-- set up setter injection -->
         <property name="fortuneService" ref="myFortune" />
+
+        <!-- set up literal values -->
+        <property name="email" value="${foo.email}" />
+        <property name="team" value="${foo.team}" />
     </bean>
 
     <bean id="myLoggerConfig" class="com.udemy.spring.MyLoggerConfig" init-method="initLogger">
