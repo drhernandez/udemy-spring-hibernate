@@ -7,6 +7,10 @@ public class CricketCoach implements Coach {
 
     private FortuneService fortuneService;
 
+    public CricketCoach(FortuneService fortuneService) {
+        this.fortuneService = fortuneService;
+    }
+
     public String getEmail() {
         return email;
     }
