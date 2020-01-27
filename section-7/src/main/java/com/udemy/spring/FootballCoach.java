@@ -14,6 +14,9 @@ public class FootballCoach implements Coach {
     @Value("${lastname}")
     private String lastname;
 
+    @Autowired @Qualifier("myRandomConfiguration")
+    private String randomConfig;
+
     @Autowired @Qualifier("happyFortuneService")
     private FortuneService fortuneService;
 
@@ -24,6 +27,6 @@ public class FootballCoach implements Coach {
 
     @Override
     public String getDailyFortune() {
-        return fortuneService.getFortune();
+        return fortuneService.getFortune() + ". Random config: " + randomConfig;
     }
 }
