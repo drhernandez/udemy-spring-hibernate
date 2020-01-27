@@ -2,21 +2,24 @@ package com.udemy.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TennisCoach implements Coach {
+public class FootballCoach implements Coach {
 
-    FortuneService fortuneService;
+    @Value("${name}")
+    private String name;
 
-    @Autowired
-    public TennisCoach(@Qualifier("unHappyFortuneService") FortuneService fortuneService) {
-        this.fortuneService = fortuneService;
-    }
+    @Value("${lastname}")
+    private String lastname;
+
+    @Autowired @Qualifier("happyFortuneService")
+    private FortuneService fortuneService;
 
     @Override
     public String getDailyWorkout() {
-        return "Practices your backhand volley";
+        return "Pratice your free kicks " + name + " " + lastname;
     }
 
     @Override
