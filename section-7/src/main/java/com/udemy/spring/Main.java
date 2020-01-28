@@ -1,5 +1,6 @@
 package com.udemy.spring;
 
+import com.udemy.spring.dao.AccountDAO;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -8,16 +9,11 @@ public class Main {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        Coach theTennisCoach = context.getBean("tennisCoach", Coach.class);
-        Coach theFootballCoach = context.getBean("footballCoach", Coach.class);
+        AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
 
-        System.out.println(theTennisCoach.getDailyWorkout());
-        System.out.println(theTennisCoach.getDailyFortune());
+        accountDAO.addAccount();
 
-        System.out.println("------------------------------------");
-
-        System.out.println(theFootballCoach.getDailyWorkout());
-        System.out.println(theFootballCoach.getDailyFortune());
+        accountDAO.addAccount();
 
         context.close();
     }
